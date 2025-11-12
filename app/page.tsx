@@ -62,17 +62,13 @@ export default function Home() {
       {/* mobile screens */}
       <div className="flex md:hidden w-full bg-[#fefefc] items-center relative justify-center">
         <div className="flex flex-col items-center justify-center relative w-[90%]">
-          <div className="absolute flex flex-col -top-1.5 z-10 w-full" >
-            <ul className="cormorant italic text-sm flex flex-row absolute font-bold -top-3.5 right-0">
-              <li className="ml-4">filmmaker & photographer</li>
-            </ul>
-            <div className='z-10 text-right'>
-              <p className="text-[#111111] font-semibold oswald text-3xl">JACKSON SMITH</p>
-            </div>
-          </div>
+          <ul className="cormorant italic text-sm flex flex-row font-bold w-md float relative">
+            <li className="text-right w-full">filmmaker & photographer</li>
+          </ul>
           <div className="relative">
+            <p className="text-[#111111] font-semibold absolute z-10 -right-0.5 -top-1.5 oswald text-3xl">JACKSON SMITH</p>
             <img className="w-md z-0 aged-less" src="/walker-2.png" />
-            <div className="absolute right-0 top-full font-sans font-semibold text-right">
+            <div className="font-sans font-semibold text-right">
               <h4 className="font-black leading-4 mt-2">FEATURE FILMS</h4>
               <ul className="text-sm leading-3.5 mb-3">
                 <li>Misfits, Fires, and Forges</li>
