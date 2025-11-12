@@ -1,22 +1,6 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, M_PLUS_1_Code, Zalando_Sans_Expanded } from "next/font/google";
+import { fonts } from "@/util/fonts";
 import "./globals.css";
-
-// const geistSans = Geist({
-//   variable: "--font-geist-sans",
-//   subsets: ["latin"],
-// });
-
-const mPlus = M_PLUS_1_Code({
-  variable: "--font-m-plus",
-  subsets: ["latin"],
-});
-
-const zalando = Zalando_Sans_Expanded({
-  variable: "--font-zalando",
-  subsets: ["latin"],
-  weight: ["200"]
-});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -31,7 +15,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${mPlus.variable} ${zalando.variable}`}
+        className={`${fonts}`}
       >
         {children}
       </body>
