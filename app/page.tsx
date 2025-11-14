@@ -16,7 +16,7 @@ export default function Home() {
             </div>
           </div>
           <div className="relative">
-            <img className="w-60 lg:w-xs xl:w-md z-0 aged-less" src="/walker-2.png" />
+            <img className="w-60 lg:w-xs xl:w-md z-0 aged-less" src="/hill.jpeg" />
             <div className="absolute right-0 top-full font-sans font-semibold text-right">
               <h4 className="font-black leading-4 mt-2">FEATURE FILMS</h4>
               <ul className="text-sm leading-3.5 mb-3">
@@ -50,7 +50,7 @@ export default function Home() {
             </div>
           </div>
           <div className="relative">
-            <img className="transform rotate-180 aged w-60 lg:w-xs xl:w-md z-0" src="/walker-2.png" />
+            <img className="transform rotate-180 aged w-60 lg:w-xs xl:w-md z-0" src="/hill.jpeg" />
             <div className="absolute left-0 top-full font-sans font-semibold">
               <h4 className="font-black leading-4 mt-2">PHOTO ASSIGNMENTS</h4>
               <h4 className="font-black leading-4 mt-3">STREET</h4>
@@ -67,7 +67,7 @@ export default function Home() {
           </ul>
           <div className="relative">
             <p className="text-[#111111] font-semibold absolute z-10 -right-0.5 -top-1.5 oswald text-3xl">JACKSON SMITH</p>
-            <img className=" z-0 aged-less" src="/walker-2.png" />
+            <img className=" z-0 aged-less" src="/hill.jpeg" />
             <div className="font-sans font-semibold text-right">
               <h4 className="font-black leading-4 mt-2">FEATURE FILMS</h4>
               <ul className="text-sm leading-3.5 mb-3">
