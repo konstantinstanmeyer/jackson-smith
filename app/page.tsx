@@ -56,7 +56,7 @@ export default function Home() {
 
           {/* Layer 2: Film strip — blended with the background */}
           <img
-            className="w-full object-contain mix-blend-multiply rotate-3 pointer-events-none select-none"
+            className="w-full object-contain mix-blend-multiply rotate-3 contrast-[130%] opacity-90 pointer-events-none select-none"
             src="/film-strip.webp"
             alt=""
           />
