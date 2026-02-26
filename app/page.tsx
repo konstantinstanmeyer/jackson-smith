@@ -1,91 +1,99 @@
-import Image from "next/image";
+"use client"
+
+import { useState } from "react";
+
+const categories = [
+  { id: 1, label: "Street", gif: "/no-more-youth.gif" },
+  { id: 2, label: "Aerial", gif: "/no-more-youth.gif" },
+  { id: 3, label: "Neon", gif: "/no-more-youth.gif" },
+  { id: 4, label: "Portrait", gif: "/no-more-youth.gif" },
+  { id: 5, label: "Architecture", gif: "/no-more-youth.gif" },
+];
+
+const framePositions = [
+  { left: 0.2, width: 19.3 },
+  { left: 20.5, width: 19.3 },
+  { left: 40.5, width: 19.3 },
+  { left: 60.5, width: 19.3 },
+  { left: 80.5, width: 19.3 },
+];
 
 export default function Home() {
-  return (
-    <div className="w-screen h-screen flex flex-row">
-      <div className="hidden md:flex w-3/5 bg-[#fefefc] items-center pr-16">
-        <div className="flex flex-col items-center ml-auto relative">
-          <div className="absolute flex flex-col -right-8 -top-1.5 z-10" >
-            <ul className="cormorant italic text-sm flex flex-row absolute font-bold -top-3.5 right-0">
-              <li className="ml-4">cinematography</li>
-              <li className="ml-4">screenwriting</li>
-              <li className="ml-4">production</li>
-            </ul>
-            <div className='z-10'>
-              <p className="text-[#111111] font-semibold oswald text-xl lg:text-3xl"><span className="text-base font-black italic cormorant -mr-[0.3rem]">filmmaker</span> JACKSON SMITH</p>
-            </div>
-          </div>
-          <div className="relative">
-            <img className="w-60 lg:w-xs xl:w-md z-0 aged-less" src="/hill.jpeg" />
-            <div className="absolute right-0 top-full font-sans font-semibold text-right">
-              <h4 className="font-black leading-4 mt-2">FEATURE FILMS</h4>
-              <ul className="text-sm leading-3.5 mb-3">
-                <li>Misfits, Fires, and Forges</li>
-              </ul>
-              <h4 className="font-black leading-4">SHORT FILMS</h4>
-              <ul className="text-sm leading-3.5 mb-3">
-                <li>The Lines We'll Cross</li>
-                <li>The Forlorn Escape</li>
-              </ul>
-              <h4 className="font-black leading-4">SCREENPLAYS</h4>
-              <ul className="text-sm leading-3.5">
+  const [hovered, setHovered] = useState<number | null>(null);
 
-              </ul>
-            </div>
+  return (
+    <div className="bg-[url('/green.jpeg')] w-screen h-screen bg-cover bg-center overflow-hidden">
+      <div className="flex items-center justify-center h-full">
+        <div className="relative w-[105%]">
+
+          {/* Layer 1: GIFs — blended with the background */}
+          <div className="absolute inset-0 rotate-3 mix-blend-multiply pointer-events-none">
+            {categories.map((cat, i) => {
+              const pos = framePositions[i];
+              const isActive = hovered === i;
+              return (
+                <div
+                  key={`gif-${cat.id}`}
+                  className="absolute overflow-hidden"
+                  style={{
+                    left: `${pos.left}%`,
+                    width: `${pos.width}%`,
+                    top: "15%",
+                    height: "70%",
+                  }}
+                >
+                  <img
+                    src={cat.gif}
+                    alt=""
+                    className={`w-full h-full object-cover transition-opacity duration-300 ${
+                      isActive ? "opacity-100" : "opacity-0"
+                    }`}
+                  />
+                </div>
+              );
+            })}
           </div>
-        </div>
-      </div>
-      <div className="hidden md:flex w-2/5 bg-[#f54e00] items-center pl-16 text-[#fefefc]">
-        <div className="relative flex flex-col items-center">
-          <div className="absolute -left-8 flex flex-col -top-1.5">
-            <div>
-              <ul className="cormorant text-[#fefefc] italic text-sm flex flex-row absolute font-bold -top-[0.67rem] left-0 transform rotate-180">
-                <li className="ml-4">creativity</li>
-                <li className="ml-4">composition</li>
-                <li className="ml-4">editing</li>
-              </ul>
-            </div>
-            <div className='z-10'>
-              <p className="text-[#fefefc] tracking-wide font-semibold oswald text-xl lg:text-3xl transform rotate-180"><span className="text-base italic cormorant -mr-[0.3rem]">photographer</span> JACKSON SMITH</p>
-            </div>
-          </div>
-          <div className="relative">
-            <img className="transform rotate-180 aged w-60 lg:w-xs xl:w-md z-0" src="/hill.jpeg" />
-            <div className="absolute left-0 top-full font-sans font-semibold">
-              <h4 className="font-black leading-4 mt-2">PHOTO ASSIGNMENTS</h4>
-              <h4 className="font-black leading-4 mt-3">STREET</h4>
-              <h4 className="font-black leading-4 mt-3">GALLERY</h4>
-            </div>
-          </div>
-        </div>
-      </div>
-      {/* mobile screens */}
-      <div className="flex md:hidden w-full bg-[#fefefc] items-center relative justify-center">
-        <div className="flex flex-col items-center justify-center relative w-[90%]">
-          <ul className="cormorant italic text-sm flex flex-row font-bold w-full float relative text-right">
-            <li className="text-right w-full">filmmaker & photographer</li>
-          </ul>
-          <div className="relative">
-            <p className="text-[#111111] font-semibold absolute z-10 -right-0.5 -top-1.5 oswald text-3xl">JACKSON SMITH</p>
-            <img className=" z-0 aged-less" src="/hill.jpeg" />
-            <div className="font-sans font-semibold text-right">
-              <h4 className="font-black leading-4 mt-2">FEATURE FILMS</h4>
-              <ul className="text-sm leading-3.5 mb-3">
-                <li>Misfits, Fires, and Forges</li>
-              </ul>
-              <h4 className="font-black leading-4">SHORT FILMS</h4>
-              <ul className="text-sm leading-3.5 mb-3">
-                <li>The Lines We'll Cross</li>
-                <li>The Forlorn Escape</li>
-              </ul>
-              <h4 className="font-black leading-4">SCREENPLAYS</h4>
-              <h4 className="font-black leading-4 mt-2">PHOTO ASSIGNMENTS</h4>
-              <h4 className="font-black leading-4 mt-3">STREET</h4>
-              <h4 className="font-black leading-4 mt-3">GALLERY</h4>
-            </div>
+
+          {/* Layer 2: Film strip — blended with the background */}
+          <img
+            className="w-full object-contain mix-blend-multiply rotate-3 pointer-events-none select-none"
+            src="/film-strip.webp"
+            alt=""
+          />
+
+          {/* Layer 3: Interactive buttons — NOT blended, sits on top */}
+          <div className="absolute inset-0 rotate-3">
+            {categories.map((cat, i) => {
+              const pos = framePositions[i];
+              const isActive = hovered === i;
+
+              return (
+                <button
+                  key={cat.id}
+                  onMouseEnter={() => setHovered(i)}
+                  onMouseLeave={() => setHovered(null)}
+                  onClick={() => console.log(`Navigate to /${cat.label.toLowerCase()}`)}
+                  className="absolute cursor-pointer transition-all duration-300"
+                  style={{
+                    left: `${pos.left}%`,
+                    width: `${pos.width}%`,
+                    top: "15%",
+                    height: "70%",
+                  }}
+                >
+                  <div
+                    className={`absolute inset-0 border-2 transition-all duration-300 ${
+                      isActive
+                        ? "border-white/20 shadow-[0_0_30px_rgba(255,255,255,0.15)]"
+                        : "border-transparent"
+                    }`}
+                  />
+                </button>
+              );
+            })}
           </div>
         </div>
       </div>
     </div>
-  )
+  );
 }
